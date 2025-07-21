@@ -1,103 +1,215 @@
-import Image from "next/image";
+import IconAddress from "@/components/Icons/IconAddress";
+import IconCoQuan from "@/components/Icons/IconCoQuan";
+import IconDropdown from "@/components/Icons/IconDropdown";
+import IconFood from "@/components/Icons/IconFood";
+import IconHamburger from "@/components/Icons/IconHamburger";
+import IconNavbar from "@/components/Icons/IconNavbar";
+import IconSearch from "@/components/Icons/IconSearch";
+import IconTienTich from "@/components/Icons/IconTienTich";
+import IconWeather from "@/components/Icons/IconWeather";
+import PostCard from "@/components/PostCard";
+
+
+
+const posts = [
+  {
+    id: 1,
+    user: "Ngọc Anh Chuyên xe...",
+    time: "3 giờ trước",
+    location: "Thái Nguyên",
+    content: "SH 125 Abs đời 2019 còn mới 90% chưa đụng chạm pass ngay...",
+    images: ["/home1.png", "/home2.png", "/home3.png"],
+    likes: 12,
+    comments: 12,
+  },
+  {
+    id: 2,
+    user: "Ngọc Anh Chuyên xe...",
+    time: "3 giờ trước",
+    location: "Thái Nguyên",
+    content: "SH 125 Abs đời 2019 còn mới 90% chưa đụng chạm pass ngay...",
+    images: ["/home1.png", "/home2.png", "/home3.png"],
+    likes: 12,
+    comments: 12,
+  },
+  {
+    id: 3,
+    user: "Ngọc Anh Chuyên xe...",
+    time: "3 giờ trước",
+    location: "Thái Nguyên",
+    content: "SH 125 Abs đời 2019 còn mới 90% chưa đụng chạm pass ngay...",
+    images: ["/home1.png", "/home2.png", "/home3.png"],
+    likes: 12,
+    comments: 12,
+  },
+];
+
+
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <div>
+        <div className="flex justify-between items-center text-center px-[25px] py-[27px]">
+          <IconHamburger />
+          <div className="flex gap-[5.846px] items-center ">
+            <IconNavbar />
+            <IconDropdown />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        <div className="flex flex-col gap-2.5">
+          <div className="w-[100%] ">
+            <img src="/logo.png" alt="logo" className="w-[256px] h-[108px] aspect-[265/108] mx-auto" />
+          </div>
+
+          <div className="flex items-center justify-between w-full max-w-4xl mx-auto bg-white rounded-full shadow px-4 py-2 border border-gray-300">
+            <input
+              type="text"
+              placeholder="Khám phá Yên Hoà"
+              className="flex-1 bg-transparent focus:outline-none text-[#757574] placeholder-gray-400 px-2"
+            />
+            <div className="flex gap-2 ">
+              <button className="flex items-center flex-col mt-1">
+                <IconAddress />
+                <span className="text-[#757574] text-[8px]">Yen Hoa</span>
+              </button>
+
+              <div className="mt-2">
+                <IconSearch />
+              </div>
+
+
+            </div>
+
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-5">
+            <div className="p-4 bg-white w-fit">
+              <div className="flex items-center gap-3">
+
+                <div className="w-12 h-12 bg-[#C1E1FF] rounded-full flex items-center justify-center">
+                  <IconCoQuan />
+                </div>
+
+
+                <div className="text-[#328BDE] font-semibold leading-[20px]">
+                  <div className="text-[16px] uppercase">cơ quan</div>
+                  <div className="text-[16px] uppercase">Yên Hòa</div>
+                </div>
+              </div>
+
+              <div className="mt-4 text-[13px] text-black leading-[25px]">
+                <p>Trụ sở Uỷ ban Yên Hoà</p>
+                <p>Trụ sở HDND Yên Hoà</p>
+                <p>Trụ sở Công An Yên Hoà</p>
+                <p>Trụ sở Trạm Y tế Yên Hoà</p>
+                <p>Trường tiểu học Yên Hoà</p>
+              </div>
+            </div>
+
+            <div className="p-4 bg-white w-fit hidden md:block">
+              <div className="flex items-center gap-3">
+
+                <div className="w-12 h-12 bg-[#C1E1FF] rounded-full flex items-center justify-center">
+                  <IconWeather />
+                </div>
+
+
+                <div className="text-[#328BDE] font-semibold leading-[20px]">
+                  <div className="text-[16px] uppercase">Thời tiết</div>
+                  <div className="text-[16px] uppercase">Yên Hòa</div>
+                </div>
+              </div>
+
+              <div className="mt-4 text-[13px] text-black leading-[25px]">
+                <p>Thời tiết hôm nay Yên Hòa</p>
+                <p>Thời tiết ngày mai Yên Hòa</p>
+                <p>Thời tiết Yên Hòa 7 ngày tới</p>
+              </div>
+            </div>
+
+            <div className="p-4 bg-white w-fit">
+              <div className="flex items-center gap-3">
+
+                <div className="w-12 h-12 bg-[#C1E1FF] rounded-full flex items-center justify-center">
+                  <IconFood />
+                </div>
+
+
+                <div className="text-[#328BDE] font-semibold leading-[20px]">
+                  <div className="text-[16px] uppercase">Ẩm thực</div>
+                  <div className="text-[16px] uppercase">Yên Hòa</div>
+                </div>
+              </div>
+
+              <div className="mt-4 text-[13px] text-black leading-[25px]">
+                <p>Nhà hàng Yên Hoà</p>
+                <p>Đặc sản Yên Hoà</p>
+                <p>Quán ngon Yên Hoà</p>
+                <p>Quán ăn sáng Yên Hoà</p>
+              </div>
+            </div>
+
+            <div className="p-4 bg-white w-fit">
+              <div className="flex items-center gap-3">
+
+                <div className="w-12 h-12 bg-[#C1E1FF] rounded-full flex items-center justify-center">
+                  <IconWeather />
+                </div>
+
+
+                <div className="text-[#328BDE] font-semibold leading-[20px]">
+                  <div className="text-[16px] uppercase">nhà đất</div>
+                  <div className="text-[16px] uppercase">Yên Hòa</div>
+                </div>
+              </div>
+
+              <div className="mt-4 text-[13px] text-black leading-[25px]">
+                <p>Cần bán nhà Yên Hoà</p>
+                <p>Cần bán đất Yên Hoà</p>
+                <p>Cho thuê nhà Yên Hoà</p>
+                <p>Cho thuê phòng trọ</p>
+                <p>Yên Hoà</p>
+              </div>
+            </div>
+
+            <div className="p-4 bg-white w-fit">
+              <div className="flex items-center gap-3">
+
+                <div className="w-12 h-12 bg-[#C1E1FF] rounded-full flex items-center justify-center">
+                  <IconTienTich />
+                </div>
+
+
+                <div className="text-[#328BDE] font-semibold leading-[20px]">
+                  <div className="text-[16px] uppercase">TIỆN ÍCH</div>
+                  <div className="text-[16px] uppercase">Yên Hòa</div>
+                </div>
+              </div>
+
+              <div className="mt-4 text-[13px] text-black leading-[25px]">
+                <p>Ngân hàng, cây ATM</p>
+                <p>Quán cafe tại Yên Hoà</p>
+                <p>Quán spa tại Yên Hoà</p>
+                <p>Cứu hộ ô tô Yên Hoà</p>
+                <p>Taxi tại Yên Hoà</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            {posts.map((post) => (
+              <PostCard key={post.id} post={post} />
+            ))}
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+    </>
   );
 }
