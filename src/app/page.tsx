@@ -2,6 +2,7 @@ import Header from "@/components/Header/Header";
 import IconAddress from "@/components/Icons/IconAddress";
 import IconCoQuan from "@/components/Icons/IconCoQuan";
 import IconFood from "@/components/Icons/IconFood";
+import IconHome from "@/components/Icons/IconHome";
 import IconSearch from "@/components/Icons/IconSearch";
 import IconTienTich from "@/components/Icons/IconTienTich";
 import IconWeather from "@/components/Icons/IconWeather";
@@ -58,11 +59,11 @@ const posts = [
 
 
 export default function Home() {
-  
+
   return (
     <>
       <div>
-        <Header/>
+        <Header />
         <div className="flex flex-col gap-2.5 container-main mb-[80px]">
           <div className="w-[100%] ">
             <img src="/logo.png" alt="logo" className="w-[256px] h-[108px] aspect-[265/108] mx-auto" />
@@ -160,7 +161,7 @@ export default function Home() {
               <div className="flex items-center gap-3">
 
                 <div className="w-12 h-12 bg-[#C1E1FF] rounded-full flex items-center justify-center">
-                  <IconWeather />
+                  <IconHome />
                 </div>
 
 

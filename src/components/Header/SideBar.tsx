@@ -12,7 +12,7 @@ export default function Sidebar({ isOpen, onClose }) {
         >
             <div
                 className={`fixed left-0 top-0 h-full w-72 bg-white shadow-xl p-5 transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
-                onClick={(e) => e.stopPropagation()} // Không đóng khi click vào menu
+                onClick={(e) => e.stopPropagation()}
             >
                 <div className="flex justify-center items-center mb-6 ">
                     <img src="/logo.png" alt="Logo" className='w-[126px] h-[57px] aspect-[42/19]' />
@@ -58,7 +58,7 @@ export default function Sidebar({ isOpen, onClose }) {
                     <div>
                         <div className='flex gap-2.5'>
                             <IconPeople />
-                            <p className="font-semiboldmb-3"> Cộng đồng</p>
+                            <p className="font-semibold mb-3"> Cộng đồng</p>
                         </div>
                         <ul className="pl-3 space-y-1 text-[13px] text-[#757574] leading-5 font-medium">
                             <li>Câu chuyện địa phương</li>
