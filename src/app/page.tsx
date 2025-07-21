@@ -1,3 +1,4 @@
+import Header from "@/components/Header/Header";
 import IconAddress from "@/components/Icons/IconAddress";
 import IconCoQuan from "@/components/Icons/IconCoQuan";
 import IconDropdown from "@/components/Icons/IconDropdown";
@@ -42,6 +43,19 @@ const posts = [
     likes: 12,
     comments: 12,
   },
+
+  {
+    id: 4,
+    user: "Ngọc Anh Chuyên xe...",
+    time: "3 giờ trước",
+    location: "Thái Nguyên",
+    content: "SH 125 Abs đời 2019 còn mới 90% chưa đụng chạm pass ngay...",
+    images: ["/home1.png", "/home2.png", "/home3.png"],
+    likes: 12,
+    comments: 12,
+  },
+
+
 ];
 
 
@@ -50,20 +64,13 @@ export default function Home() {
   return (
     <>
       <div>
-        <div className="flex justify-between items-center text-center px-[25px] py-[27px]">
-          <IconHamburger />
-          <div className="flex gap-[5.846px] items-center ">
-            <IconNavbar />
-            <IconDropdown />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2.5">
+        <Header/>
+        <div className="flex flex-col gap-2.5 container-main">
           <div className="w-[100%] ">
             <img src="/logo.png" alt="logo" className="w-[256px] h-[108px] aspect-[265/108] mx-auto" />
           </div>
 
-          <div className="flex items-center justify-between w-full max-w-4xl mx-auto bg-white rounded-full shadow px-4 py-2 border border-gray-300">
+          <div className="flex items-center justify-between w-[60%] mx-auto bg-white rounded-full shadow px-4 py-2 border border-gray-300">
             <input
               type="text"
               placeholder="Khám phá Yên Hoà"
@@ -85,7 +92,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-5">
-            <div className="p-4 bg-white w-fit">
+            <div className="p-4 bg-white ">
               <div className="flex items-center gap-3">
 
                 <div className="w-12 h-12 bg-[#C1E1FF] rounded-full flex items-center justify-center">
@@ -108,7 +115,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="p-4 bg-white w-fit hidden md:block">
+            <div className="p-4 bg-white hidden md:block">
               <div className="flex items-center gap-3">
 
                 <div className="w-12 h-12 bg-[#C1E1FF] rounded-full flex items-center justify-center">
@@ -129,7 +136,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="p-4 bg-white w-fit">
+            <div className="p-4 bg-white">
               <div className="flex items-center gap-3">
 
                 <div className="w-12 h-12 bg-[#C1E1FF] rounded-full flex items-center justify-center">
@@ -151,7 +158,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="p-4 bg-white w-fit">
+            <div className="p-4 bg-white">
               <div className="flex items-center gap-3">
 
                 <div className="w-12 h-12 bg-[#C1E1FF] rounded-full flex items-center justify-center">
@@ -174,7 +181,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="p-4 bg-white w-fit">
+            <div className="p-4 bg-white">
               <div className="flex items-center gap-3">
 
                 <div className="w-12 h-12 bg-[#C1E1FF] rounded-full flex items-center justify-center">
