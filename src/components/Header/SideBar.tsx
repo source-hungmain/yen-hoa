@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import IconDanhBa from '../Icons/IconDanhBa';
 import IconKhamPha from '../Icons/IconKhamPha';
 import IconPeople from '../Icons/IconPeople';
@@ -25,10 +26,11 @@ export default function Sidebar({
         onClick={(e) => e.stopPropagation()} // Không đóng khi click vào menu
       >
         <div className='flex justify-center items-center mb-6 '>
-          <img
+          <Image
             src='/logo.png'
             alt='Logo'
-            className='w-[126px] h-[57px] aspect-[42/19]'
+            fill
+            className='w-[126px] h-[57px] aspect-[42/19] object-cover'
           />
         </div>
 
