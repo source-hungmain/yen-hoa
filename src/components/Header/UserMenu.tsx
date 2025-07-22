@@ -1,6 +1,6 @@
 import React from 'react';
-import IconQua from '../Icons/IconQua';
-import IconThe from '../Icons/IconThe';
+import IconQua from '../icons/IconQua';
+import IconThe from '../icons/IconThe';
 import Image from 'next/image';
 
 export default function UserMenu({

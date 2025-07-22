@@ -1,9 +1,9 @@
 'use client';
 import Image from 'next/image';
-import IconDanhBa from '../Icons/IconDanhBa';
-import IconKhamPha from '../Icons/IconKhamPha';
-import IconPeople from '../Icons/IconPeople';
-import IconRaoVat from '../Icons/IconRaoVat';
+import IconDanhBa from '../icons/IconDanhBa';
+import IconKhamPha from '../icons/IconKhamPha';
+import IconPeople from '../icons/IconPeople';
+import IconRaoVat from '../icons/IconRaoVat';
 
 export default function Sidebar({
   isOpen,

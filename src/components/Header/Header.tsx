@@ -1,12 +1,12 @@
 'use client'
 import React, { useState } from 'react'
-import IconHamburger from '../Icons/IconHamburger'
-import IconDropdown from '../Icons/IconDropdown'
+import IconHamburger from '../icons/IconHamburger'
+import IconDropdown from '../icons/IconDropdown'
 import Sidebar from './SideBar'
-import IconMess from '../Icons/IconMess'
-import IconApp from '../Icons/IconApp'
-import IconHuman from '../Icons/IconHuman'
-import IconFlag from '../Icons/IconFlag'
+import IconMess from '../icons/IconMess'
+import IconApp from '../icons/IconApp'
+import IconHuman from '../icons/IconHuman'
+import IconFlag from '../icons/IconFlag'
 import AppMenu from './AppMenu'
 import UserMenu from './UserMenu'
 
@@ -36,8 +36,6 @@ export default function Header() {
                             <IconHuman />
                         </button>
                         <UserMenu show={showUserMenu} onClose={() => setShowUserMenu(false)} />
-
-
 
                         <IconFlag />
                     </div>
