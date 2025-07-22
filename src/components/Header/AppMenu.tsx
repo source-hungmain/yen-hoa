@@ -1,11 +1,11 @@
 import React from 'react';
-import IconCoQuan from '../Icons/IconCoQuan';
-import IconWeather from '../Icons/IconWeather';
-import IconFood from '../Icons/IconFood';
-import IconTienTich from '../Icons/IconTienTich';
-import IconHome from '../Icons/IconHome';
+import IconCoQuan from '../icons/IconCoQuan';
+import IconWeather from '../icons/IconWeather';
+import IconFood from '../icons/IconFood';
+import IconTienTich from '../icons/IconTienTich';
+import IconHome from '../icons/IconHome';
 import Image from 'next/image';
-import IconDropDownBlue from '../Icons/IconDropDownBlue';
+import IconDropDownBlue from '../icons/IconDropDownBlue';
 
 export default function AppMenu({
   show,

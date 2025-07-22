@@ -1,5 +1,5 @@
-import IconFacebook from "@/components/Icons/IconFacebook";
-import IconMail from "@/components/Icons/IconMail";
+import IconFacebook from "@/components/icons/IconFacebook";
+import IconMail from "@/components/icons/IconMail";
 
 export default function Page() {
     return <>
