@@ -9,37 +9,63 @@ import IconFlag from '../icons/IconFlag';
 import Sidebar from './SideBar';
 import AppMenu from './AppMenu';
 import UserMenu from './UserMenu';
+import { useClickOutside } from '@/hooks/useClickOutside';
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
 
+  const userMenuRef = useClickOutside<HTMLDivElement>(
+    () => setShowUserMenu(false),
+    showUserMenu
+  );
+
+  const menuRef = useClickOutside<HTMLDivElement>(
+    () => setShowMenu(false),
+    showMenu
+  );
+
   return (
     <>
       <div className='container-header'>
         <div className='flex justify-between items-center text-center py-[27px] px-4'>
-          <button onClick={() => setIsSidebarOpen(true)}>
+          <div
+            onClick={() => setIsSidebarOpen(true)}
+            className='cursor-pointer'
+          >
             <IconHamburger />
-          </button>
+          </div>
 
           <div className='flex gap-[5.846px] items-center'>
-            <div className='flex gap-6'>
-              <IconMess />
-              <button onClick={() => setShowMenu(true)}>
+            <div className='flex gap-6 items-center'>
+              <div className='cursor-pointer relative'>
+                <IconMess />
+              </div>
+              <div
+                ref={menuRef}
+                onClick={() => setShowMenu(true)}
+                className='cursor-pointer relative'
+              >
                 <IconApp />
-              </button>
+              </div>
               <AppMenu show={showMenu} onClose={() => setShowMenu(false)} />
 
-              <button onClick={() => setShowUserMenu(true)}>
+              <div
+                ref={userMenuRef}
+                onClick={() => setShowUserMenu(true)}
+                className='cursor-pointer relative'
+              >
                 <IconHuman />
-              </button>
-              <UserMenu
-                show={showUserMenu}
-                onClose={() => setShowUserMenu(false)}
-              />
+                <UserMenu
+                  show={showUserMenu}
+                  onClose={() => setShowUserMenu(false)}
+                />
+              </div>
 
-              <IconFlag />
+              <div className='cursor-pointer'>
+                <IconFlag />
+              </div>
             </div>
 
             <IconDropdown />
