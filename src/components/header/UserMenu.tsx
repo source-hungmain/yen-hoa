@@ -13,7 +13,7 @@ export default function UserMenu({
   if (!show) return null;
 
   return (
-    <div className='absolute right-0 top-12 bg-white shadow-lg rounded-lg w-80 p-4 z-50 border border-gray-200'>
+    <div className='absolute right-0 top-7 bg-white shadow-lg rounded-lg w-80 p-4 z-50 border border-gray-200'>
       <div className='flex justify-center mb-2'></div>
 
       <h3 className='font-bold text-center mb-2'>
@@ -36,20 +36,20 @@ export default function UserMenu({
           <span className='text-sm mt-1'>Thẻ điện thoại</span>
         </div>
         <div className='flex flex-col items-center'>
-          <Image src='/voucher.png' alt='Voucher' width={40} height={40} />
+          <Image src='/voucher.png' alt='Voucher' width={60} height={60} />
           <span className='text-sm mt-1'>Voucher</span>
         </div>
       </div>
 
       <button
         onClick={onClose}
-        className='bg-blue-500 text-white w-full py-2 rounded hover:bg-blue-600'
+        className='bg-blue-500 text-white w-full py-2 rounded hover:bg-blue-600 cursor-pointer'
       >
         Đăng nhập
       </button>
 
       <div className='text-center mt-2'>
-        <button className='text-blue-500 text-sm hover:underline'>
+        <button className='text-blue-500 text-sm hover:underline cursor-pointer'>
           Tìm hiểu thêm
         </button>
       </div>
