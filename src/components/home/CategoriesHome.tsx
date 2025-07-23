@@ -87,7 +87,7 @@ export default function CategoriesHome() {
     },
   ];
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5'>
+    <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5'>
       {sectionList.map((section, index) => (
         <div
           key={index}
@@ -108,9 +108,14 @@ export default function CategoriesHome() {
             </div>
           </div>
 
-          <div className='mt-4 text-[13px] text-black leading-[25px]'>
+          <div className='mt-4'>
             {section.contents.map((text, i) => (
-              <p key={i}>{text}</p>
+              <p
+                key={i}
+                className='text-[13px] text-black font-thin leading-[25px] line-clamp-1'
+              >
+                {text}
+              </p>
             ))}
           </div>
         </div>

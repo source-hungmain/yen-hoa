@@ -25,7 +25,7 @@ export default function ArticlesCard({ post }: { post: IPost }) {
         </div>
       </div>
 
-      <p className='text-sm mt-1'>{post.content}</p>
+      <p className='text-sm mt-1 line-clamp-2'>{post.content}</p>
 
       <div className='grid grid-cols-2 gap-1 mt-2'>
         <div>
