@@ -28,6 +28,7 @@ export default function Header() {
 
   return (
     <>
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
       <div className='container-header'>
         <div className='flex justify-between items-center text-center py-[27px] px-4'>
           <div
@@ -48,8 +49,8 @@ export default function Header() {
                 className='cursor-pointer relative'
               >
                 <IconApp />
+                <AppMenu show={showMenu} />
               </div>
-              <AppMenu show={showMenu} onClose={() => setShowMenu(false)} />
 
               <div
                 ref={userMenuRef}
@@ -72,8 +73,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-
-      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
     </>
   );
 }

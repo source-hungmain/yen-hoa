@@ -13,7 +13,7 @@ export default function UserMenu({
   if (!show) return null;
 
   return (
-    <div className='absolute right-0 top-7 bg-white shadow-lg rounded-lg w-80 p-4 z-50 border border-gray-200'>
+    <div className='fixed top-15 w-[90%] right-[5%] md:absolute md:right-0 md:top-7 bg-white shadow-lg rounded-lg md:w-80 p-4 z-50 border border-gray-200'>
       <div className='flex justify-center mb-2'></div>
 
       <h3 className='font-bold text-center mb-2'>
