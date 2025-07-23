@@ -10,12 +10,13 @@ import Sidebar from './SideBar';
 import AppMenu from './AppMenu';
 import UserMenu from './UserMenu';
 import { useClickOutside } from '@/hooks/useClickOutside';
+import ProfileMenu from './ProfileMenu';
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
-
+  const isLogin = true;
   const userMenuRef = useClickOutside<HTMLDivElement>(
     () => setShowUserMenu(false),
     showUserMenu
@@ -58,10 +59,14 @@ export default function Header() {
                 className='cursor-pointer relative'
               >
                 <IconHuman />
-                <UserMenu
-                  show={showUserMenu}
-                  onClose={() => setShowUserMenu(false)}
-                />
+                {isLogin ? (
+                  <ProfileMenu show={showUserMenu} />
+                ) : (
+                  <UserMenu
+                    show={showUserMenu}
+                    onClose={() => setShowUserMenu(false)}
+                  />
+                )}
               </div>
 
               <div className='cursor-pointer'>
