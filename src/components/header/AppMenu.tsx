@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import IconCoQuan from '../icons/IconCoQuan';
 import IconWeather from '../icons/IconWeather';
 import IconFood from '../icons/IconFood';
@@ -7,14 +7,7 @@ import IconHome from '../icons/IconHome';
 import Image from 'next/image';
 import IconDropDownBlue from '../icons/IconDropDownBlue';
 
-export default function AppMenu({
-  show,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  onClose,
-}: {
-  show: boolean;
-  onClose: () => void;
-}) {
+export default function AppMenu({ show }: { show: boolean }) {
   if (!show) return null;
 
   return (

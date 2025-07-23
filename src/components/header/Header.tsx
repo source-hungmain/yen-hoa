@@ -49,7 +49,7 @@ export default function Header() {
                 className='cursor-pointer relative'
               >
                 <IconApp />
-                <AppMenu show={showMenu} onClose={() => setShowMenu(false)} />
+                <AppMenu show={showMenu} />
               </div>
 
               <div
