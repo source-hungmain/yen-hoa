@@ -12,6 +12,11 @@ import UserMenu from './UserMenu';
 import { useClickOutside } from '@/hooks/useClickOutside';
 import ProfileMenu from './ProfileMenu';
 import Updateprofile from '../home/Updateprofile';
+import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import clsx from 'clsx';
+import Link from 'next/link';
+import IconSearch from '../icons/IconSearch';
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -19,6 +24,9 @@ export default function Header() {
   const [showMenu, setShowMenu] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const isLogin = true;
+  const pathName = usePathname();
+  const isHome = pathName === '/';
+
   const userMenuRef = useClickOutside<HTMLDivElement>(
     () => setShowUserMenu(false),
     showUserMenu
@@ -49,57 +57,102 @@ export default function Header() {
         onClose={() => setModalUpdateProfile(false)}
       />
 
-      <div className='container-header'>
-        <div className='flex justify-between items-center text-center py-[27px] px-4'>
+      <div className={isHome ? '' : 'border-b border-[#d4d4d4]'}>
+        <div className={'container-header'}>
           <div
-            onClick={() => setIsSidebarOpen(true)}
-            className='cursor-pointer'
+            className={clsx(
+              'flex justify-between items-center text-center',
+              isHome ? 'py-[27px]' : 'pt-[19px] pb-4'
+            )}
           >
-            <IconHamburger />
-          </div>
-
-          <div className='flex gap-[5.846px] items-center'>
-            <div className='flex gap-6 items-center'>
-              <div className='cursor-pointer relative'>
-                <IconMess />
-              </div>
-              <div
-                ref={menuRef}
-                onClick={() => setShowMenu(true)}
-                className='cursor-pointer relative'
+            <div
+              onClick={() => setIsSidebarOpen(true)}
+              className={clsx(
+                'cursor-pointer',
+                isHome ? '' : 'block md:hidden'
+              )}
+            >
+              <IconHamburger />
+            </div>
+            <div
+              className={clsx(
+                'items-center gap-[29px]',
+                isHome ? 'hidden' : 'md:flex'
+              )}
+            >
+              <Link
+                href={process.env.NEXT_PUBLIC_DOMAIN || '/'}
+                className='relative w-[100px] md:w-[134px] md:h-[55px] aspect-[134/55]'
               >
-                <IconApp />
-                <AppMenu show={showMenu} />
-              </div>
-
-              <div
-                ref={userMenuRef}
-                onClick={() => setShowUserMenu(true)}
-                className='cursor-pointer relative'
-              >
-                <IconHuman />
-                {isLogin ? (
-                  <ProfileMenu
-                    show={showUserMenu}
-                    openModalUpdateProfile={() => {
-                      // setShowUserMenu(false);
-                      setModalUpdateProfile(true);
-                    }}
-                  />
-                ) : (
-                  <UserMenu
-                    show={showUserMenu}
-                    onClose={() => setShowUserMenu(false)}
-                  />
-                )}
-              </div>
-
-              <div className='cursor-pointer'>
-                <IconFlag />
+                <Image
+                  fill
+                  quality={100}
+                  sizes='100vw'
+                  className='object-cover'
+                  src='/logo.png'
+                  alt='logo'
+                />
+              </Link>
+              <div className='relative w-[381px] md:block hidden'>
+                <input
+                  className='py-[11px] text-[15px] pl-[17px] pr-[50px] w-full border border-[#b8b8b8] rounded-[100px] outline-0'
+                  type='text'
+                  placeholder='Khám phá Yên Hoà'
+                />
+                <div className='absolute right-[20px] top-[15px] cursor-pointer'>
+                  <IconSearch />
+                </div>
               </div>
             </div>
 
-            <IconDropdown />
+            <div className='flex gap-[5.846px] items-center'>
+              <div
+                className={clsx(
+                  'flex items-center',
+                  isHome ? 'gap-6' : 'gap-4'
+                )}
+              >
+                <div className='cursor-pointer relative'>
+                  <IconMess />
+                </div>
+                <div
+                  ref={menuRef}
+                  onClick={() => setShowMenu(true)}
+                  className='cursor-pointer relative'
+                >
+                  <IconApp />
+                  <AppMenu show={showMenu} />
+                </div>
+
+                <div
+                  ref={userMenuRef}
+                  onClick={() => setShowUserMenu(true)}
+                  className='cursor-pointer relative'
+                >
+                  <IconHuman />
+                  {isLogin ? (
+                    <ProfileMenu
+                      show={showUserMenu}
+                      openModalUpdateProfile={() => {
+                        // setShowUserMenu(false);
+                        setModalUpdateProfile(true);
+                      }}
+                    />
+                  ) : (
+                    <UserMenu
+                      show={showUserMenu}
+                      onClose={() => setShowUserMenu(false)}
+                    />
+                  )}
+                </div>
+
+                <div className='cursor-pointer'>
+                  <IconFlag />
+                </div>
+              </div>
+
+              <IconDropdown />
+            </div>
           </div>
         </div>
       </div>
