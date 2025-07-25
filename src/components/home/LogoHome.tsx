@@ -10,7 +10,7 @@ export default function LogoHome() {
         width={1000}
         height={1000}
         sizes='100vw'
-        className='w-full max-w-[265px]'
+        className='w-full max-w-[175px] md:max-w-[265px]'
       />
     </div>
   );
