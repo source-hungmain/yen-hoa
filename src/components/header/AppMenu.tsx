@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import IconCoQuan from '../icons/IconCoQuan';
 import IconWeather from '../icons/IconWeather';
 import IconFood from '../icons/IconFood';

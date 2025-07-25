@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import IconHamburger from '../icons/IconHamburger';
 import IconDropdown from '../icons/IconDropdown';
 import IconMess from '../icons/IconMess';
@@ -10,12 +10,15 @@ import Sidebar from './SideBar';
 import AppMenu from './AppMenu';
 import UserMenu from './UserMenu';
 import { useClickOutside } from '@/hooks/useClickOutside';
+import ProfileMenu from './ProfileMenu';
+import Updateprofile from '../home/Updateprofile';
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [modalUpdateProfile, setModalUpdateProfile] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
-
+  const isLogin = true;
   const userMenuRef = useClickOutside<HTMLDivElement>(
     () => setShowUserMenu(false),
     showUserMenu
@@ -26,9 +29,26 @@ export default function Header() {
     showMenu
   );
 
+  const modalUpdateProfileRef = useClickOutside<HTMLDivElement>(
+    () => setModalUpdateProfile(false),
+    modalUpdateProfile
+  );
+
+  useEffect(() => {
+    if (modalUpdateProfile) {
+      setShowUserMenu(false);
+    }
+  }, [modalUpdateProfile]);
+
   return (
     <>
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+      <Updateprofile
+        modalUpdateProfile={modalUpdateProfile}
+        modalRef={modalUpdateProfileRef}
+        onClose={() => setModalUpdateProfile(false)}
+      />
+
       <div className='container-header'>
         <div className='flex justify-between items-center text-center py-[27px] px-4'>
           <div
@@ -58,10 +78,20 @@ export default function Header() {
                 className='cursor-pointer relative'
               >
                 <IconHuman />
-                <UserMenu
-                  show={showUserMenu}
-                  onClose={() => setShowUserMenu(false)}
-                />
+                {isLogin ? (
+                  <ProfileMenu
+                    show={showUserMenu}
+                    openModalUpdateProfile={() => {
+                      // setShowUserMenu(false);
+                      setModalUpdateProfile(true);
+                    }}
+                  />
+                ) : (
+                  <UserMenu
+                    show={showUserMenu}
+                    onClose={() => setShowUserMenu(false)}
+                  />
+                )}
               </div>
 
               <div className='cursor-pointer'>
