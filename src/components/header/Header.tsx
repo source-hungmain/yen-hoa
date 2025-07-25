@@ -15,7 +15,7 @@ import Updateprofile from '../home/Updateprofile';
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [modalUpdateProfile, setModalUpdateProfile] = useState(true);
+  const [modalUpdateProfile, setModalUpdateProfile] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const isLogin = true;
