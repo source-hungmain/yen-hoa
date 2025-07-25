@@ -109,14 +109,14 @@ const newPosts = [
 
 const DetailPost = () => {
   return (
-    <div className='2xl:w-[70%] w-[90%] mx-auto bg-white'>
+    <div className='container-header bg-white'>
       {/* Breadcrumb */}
-      <div className='text-xs text-gray-500 px-4 py-2'>
+      <div className='text-xs text-gray-500 py-2'>
         <p>Trang chủ / Pháp luật / Hồ sơ dự án</p>
       </div>
 
       {/* Main Content */}
-      <div className='flex flex-col md:flex-row px-4 gap-6'>
+      <div className='flex flex-col md:flex-row gap-6'>
         {/* Left Sidebar */}
         <div className='md:w-1/5 order-2 md:order-1'>
           <h2 className='font-bold text-lg mb-3'>Bài viết mới</h2>
@@ -212,7 +212,7 @@ const DetailPost = () => {
           </p>
 
           {/* Social Engagement Section */}
-          <div className='flex items-center justify-between pt-4'>
+          <div className='flex md:items-center justify-between pt-4 md:flex-row flex-col'>
             <div className='flex items-center space-x-4'>
               <button className='flex items-center space-x-1 bg-[#E6E6E6] py-2 px-3 rounded-full cursor-pointer'>
                 <svg
@@ -253,8 +253,8 @@ const DetailPost = () => {
                   fill='none'
                 >
                   <path
-                    fill-rule='evenodd'
-                    clip-rule='evenodd'
+                    fillRule='evenodd'
+                    clipRule='evenodd'
                     d='M3.55667 13.11L1.66667 15V11.5358C0.625 10.3192 0 8.77 0 7.08333C0 3.17167 3.35833 0 7.5 0C11.6417 0 15 3.17167 15 7.08333C15 10.995 11.6417 14.1667 7.5 14.1667C6.115 14.1712 4.75384 13.8064 3.55667 13.11Z'
                     fill='black'
                   />

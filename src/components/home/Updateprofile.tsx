@@ -54,7 +54,6 @@ export default function Updateprofile({
   // Validation rules
   const validationRules = {
     email: {
-      required: 'Email là bắt buộc',
       pattern: {
         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
         message: 'Email không hợp lệ',
@@ -62,8 +61,8 @@ export default function Updateprofile({
     },
     phone: {
       pattern: {
-        value: /^[0-9]{10,11}$/,
-        message: 'Số điện thoại phải có 10-11 chữ số',
+        value: /^[0-9]{10}$/,
+        message: 'Số điện thoại phải có 10 chữ số',
       },
     },
     birthYear: {
@@ -159,7 +158,7 @@ export default function Updateprofile({
               {...register('firstName')}
               type='text'
               readOnly
-              className='w-full px-3 py-2 bg-[#f0f0f0] border-0 rounded text-[#2a2b2b] font-medium focus:outline-none cursor-not-allowed'
+              className='w-full px-3 text-sm py-2 bg-[#f0f0f0] border-0 rounded text-[#2a2b2b] font-medium focus:outline-none cursor-not-allowed'
             />
           </div>
 
@@ -169,7 +168,7 @@ export default function Updateprofile({
               {...register('lastName')}
               type='text'
               readOnly
-              className='w-full px-3 py-2 bg-[#f0f0f0] border-0 rounded text-[#2a2b2b] font-medium focus:outline-none cursor-not-allowed'
+              className='w-full px-3 text-sm py-2 bg-[#f0f0f0] border-0 rounded text-[#2a2b2b] font-medium focus:outline-none cursor-not-allowed'
             />
           </div>
 
@@ -178,7 +177,7 @@ export default function Updateprofile({
             <input
               {...register('email', validationRules.email)}
               type='email'
-              className={`w-full px-3 py-2 bg-[#efefef] border-0 rounded text-[#2a2b2b] focus:outline-none focus:ring-2 focus:ring-[#328bde] transition-all ${
+              className={`w-full px-3 py-2 text-sm bg-[#efefef] border-0 rounded text-[#2a2b2b] focus:outline-none focus:ring-2 focus:ring-[#328bde] transition-all ${
                 errors.email ? 'ring-2 ring-red-500' : ''
               }`}
               placeholder='Email'
@@ -198,7 +197,7 @@ export default function Updateprofile({
             <input
               {...register('phone', validationRules.phone)}
               type='tel'
-              className={`w-full px-3 py-2 bg-[#f0f0f0] border-0 rounded text-[#2a2b2b] focus:outline-none focus:ring-2 focus:ring-[#328bde] transition-all ${
+              className={`w-full px-3 py-2 text-sm bg-[#f0f0f0] border-0 rounded text-[#2a2b2b] focus:outline-none focus:ring-2 focus:ring-[#328bde] transition-all ${
                 errors.phone ? 'ring-2 ring-red-500' : ''
               }`}
               placeholder='Nhập số điện thoại'
@@ -218,7 +217,7 @@ export default function Updateprofile({
             <input
               {...register('birthYear', validationRules.birthYear)}
               type='text'
-              className={`w-full px-3 py-2 bg-[#f0f0f0] border-0 rounded text-[#2a2b2b] focus:outline-none focus:ring-2 focus:ring-[#328bde] transition-all ${
+              className={`w-full px-3 py-2 text-sm bg-[#f0f0f0] border-0 rounded text-[#2a2b2b] focus:outline-none focus:ring-2 focus:ring-[#328bde] transition-all ${
                 errors.birthYear ? 'ring-2 ring-red-500' : ''
               }`}
               placeholder='Ví dụ: 1990'
@@ -238,7 +237,7 @@ export default function Updateprofile({
             <input
               {...register('other')}
               type='text'
-              className='w-full px-3 py-2 bg-[#f0f0f0] border-0 rounded text-[#2a2b2b] focus:outline-none focus:ring-2 focus:ring-[#328bde] transition-all'
+              className='w-full px-3 text-sm py-2 bg-[#f0f0f0] border-0 rounded text-[#2a2b2b] focus:outline-none focus:ring-2 focus:ring-[#328bde] transition-all'
               placeholder='Thông tin khác'
             />
           </div>
