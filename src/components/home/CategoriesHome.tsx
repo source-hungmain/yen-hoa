@@ -4,6 +4,7 @@ import IconHome from '../icons/IconHome';
 import IconFood from '../icons/IconFood';
 import IconWeather from '../icons/IconWeather';
 import IconCoQuan from '../icons/IconCoQuan';
+import { getBaseUrl } from '@/utils';
 
 export interface SectionItem {
   title: string;
@@ -12,7 +13,9 @@ export interface SectionItem {
   hiddenOnMobile?: boolean;
 }
 
-export default function CategoriesHome() {
+export default async function CategoriesHome() {
+  const baseUrl = await getBaseUrl();
+
   const iconList = [
     {
       icon: <IconCoQuan />,
@@ -30,6 +33,8 @@ export default function CategoriesHome() {
       icon: <IconTienTich />,
     },
   ];
+
+  console.log(baseUrl);
 
   const sectionList: SectionItem[] = [
     {
@@ -102,7 +107,12 @@ export default function CategoriesHome() {
 
             <div className='text-[#328BDE] font-semibold leading-[20px] '>
               <div className='text-[16px] uppercase'>
-                {section.title} {section.subtitle}
+                {section.title} {section.subtitle}{' '}
+                {baseUrl === 'yenhoa1.aneed.io'
+                  ? '1'
+                  : baseUrl === 'yenhoa2.aneed.io'
+                  ? '2'
+                  : ''}
               </div>
               {/* <div className='text-[16px] uppercase'>{section.subtitle}</div> */}
             </div>
