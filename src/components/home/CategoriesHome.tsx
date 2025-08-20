@@ -5,6 +5,7 @@ import IconFood from '../icons/IconFood';
 import IconWeather from '../icons/IconWeather';
 import IconCoQuan from '../icons/IconCoQuan';
 import { getBaseUrl } from '@/utils';
+import { getCurrentWeather } from '@/libs/weather';
 // import dataMap from '@/data/danh_sach_co_toa_do.json';
 
 export interface SectionItem {
@@ -36,6 +37,8 @@ export default async function CategoriesHome() {
   ];
   // const location = dataMap.filter((item) => item?.domain === baseUrl);
   // console.log(location);
+  const currentWeather = await getCurrentWeather('21.0023161, 105.7179738');
+  console.log(currentWeather?.weather);
 
   const sectionList: SectionItem[] = [
     {
