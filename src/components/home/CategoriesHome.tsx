@@ -5,6 +5,7 @@ import IconFood from '../icons/IconFood';
 import IconWeather from '../icons/IconWeather';
 import IconCoQuan from '../icons/IconCoQuan';
 import { getBaseUrl } from '@/utils';
+// import dataMap from '@/data/danh_sach_co_toa_do.json';
 
 export interface SectionItem {
   title: string;
@@ -33,8 +34,8 @@ export default async function CategoriesHome() {
       icon: <IconTienTich />,
     },
   ];
-
-  console.log(baseUrl);
+  // const location = dataMap.filter((item) => item?.domain === baseUrl);
+  // console.log(location);
 
   const sectionList: SectionItem[] = [
     {
