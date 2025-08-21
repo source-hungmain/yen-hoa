@@ -1,12 +1,10 @@
 "use client";
-import BaseInput from "@/components/baseInput";
 import IconFacebook from "@/components/icons/IconFacebook";
-import IconMail from "@/components/icons/IconMail";
 import Image from "next/image";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import SubmitOtp from "@/components/OTP/SubmitOpt";
+import SubmitOtp from "@/components/OTP/SubmitOtp";
 import { useState } from "react";
 
 interface IFormLogin {
