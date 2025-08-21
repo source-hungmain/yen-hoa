@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
-import ReduxProvider from './ReduxProvider';
+import ReduxProvider from '../store/ReduxProvider';
 
 const interFont = Inter({
   variable: '--font-inter',
