@@ -4,9 +4,9 @@ import Image from "next/image";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import SubmitOtp from "@/components/Login/SubmitOtp";
+import SubmitOtp from "@/components/OtpLoginComponent/SubmitOtp";
 import { useState } from "react";
-import BaseInput from "@/components/BaseInput/BaseInput";
+import BaseInput from "@/components/BaseInputComponent/BaseInput";
 
 interface IFormLogin {
   sdt: string;
