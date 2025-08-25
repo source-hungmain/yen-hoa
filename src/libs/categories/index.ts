@@ -12,7 +12,7 @@ export async function getListCategories() {
                 sort: "lft",
             },
         });
-        return res.data;
+        return res.data.result;
     } catch (error) {
         console.error("Error fetching new getPosts:", error);
         return null; // Tránh lỗi làm crash app

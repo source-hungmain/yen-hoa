@@ -17,8 +17,9 @@ import Image from 'next/image';
 import clsx from 'clsx';
 import Link from 'next/link';
 import IconSearch from '../icons/IconSearch';
+import { ICategory } from '@/interfaces/ICaterory';
 
-export default function Header() {
+export default function Header({ listCategories }: { listCategories: ICategory[] }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [modalUpdateProfile, setModalUpdateProfile] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -50,7 +51,11 @@ export default function Header() {
 
   return (
     <>
-      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+      <Sidebar
+        listCategories={listCategories}
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+      />
       <Updateprofile
         modalUpdateProfile={modalUpdateProfile}
         modalRef={modalUpdateProfileRef}

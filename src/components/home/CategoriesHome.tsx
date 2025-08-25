@@ -6,7 +6,7 @@ import IconWeather from '../icons/IconWeather';
 import IconCoQuan from '../icons/IconCoQuan';
 import { getBaseUrl } from '@/utils';
 import { getCurrentWeather } from '@/libs/weather';
-// import dataMap from '@/data/danh_sach_co_toa_do.json';
+import dataMap from '@/data/subadmin2.json';
 
 export interface SectionItem {
   title: string;
@@ -35,8 +35,10 @@ export default async function CategoriesHome() {
       icon: <IconTienTich />,
     },
   ];
-  // const location = dataMap.filter((item) => item?.domain === baseUrl);
-  // console.log(location);
+  console.log(baseUrl);
+
+  const location = dataMap.data.filter((item) => item?.slug === baseUrl);
+  console.log(location);
   const currentWeather = await getCurrentWeather('21.0023161, 105.7179738');
   console.log(currentWeather?.weather);
 

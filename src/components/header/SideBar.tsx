@@ -5,44 +5,22 @@ import IconKhamPha from '../icons/IconKhamPha';
 import IconPeople from '../icons/IconPeople';
 import IconRaoVat from '../icons/IconRaoVat';
 import { useEffect } from 'react';
+import { ICategory } from '@/interfaces/ICaterory';
 
 export default function Sidebar({
+  listCategories,
   isOpen,
   onClose,
 }: {
+  listCategories: ICategory[];
   isOpen: boolean;
   onClose: () => void;
 }) {
-  const MENU_DATA = [
-    {
-      icon: <IconKhamPha />,
-      title: 'Khám phá',
-      items: [
-        'Địa điểm nổi bật',
-        'Nhà hàng & Cafe',
-        'Điểm tâm linh',
-        'Lưu trú',
-      ],
-    },
-    {
-      icon: <IconRaoVat />,
-      title: 'Rao Vặt',
-      items: ['Nhà đất', 'Việc làm', 'Hàng hoá', 'Dịch vụ'],
-    },
-    {
-      icon: <IconDanhBa />,
-      title: 'Danh bạ',
-      items: [
-        'Doanh nghiệp',
-        'Cơ quan - Đơn vị hành chính',
-        'Dịch vụ địa phương',
-      ],
-    },
-    {
-      icon: <IconPeople />,
-      title: 'Cộng đồng',
-      items: ['Câu chuyện địa phương', 'Tin tức Yên Hoà', 'Khoảnh khắc Fun'],
-    },
+  const menuIcon = [
+    <IconKhamPha />,
+    <IconRaoVat />,
+    <IconDanhBa />,
+    <IconPeople />,
   ];
 
   const FOOTER_LINKS = ['Về YenhoaFun', 'Chính sách', 'Điều khoản'];
@@ -82,19 +60,20 @@ export default function Sidebar({
         </div>
 
         <div className='space-y-6 text-sm text-gray-800 relative'>
-          {MENU_DATA.map((section, idx) => (
-            <div key={idx}>
-              <div className='flex gap-2.5 mb-3 items-center'>
-                {section.icon}
-                <p className='font-semibold'>{section.title}</p>
+          {listCategories.length > 0 &&
+            listCategories.map((section, index) => (
+              <div key={index}>
+                <div className='flex gap-2.5 mb-3 items-center'>
+                  {menuIcon[index]}
+                  <p className='font-semibold'>{section.name}</p>
+                </div>
+                <ul className='pl-10 space-y-1 text-[13px] text-[#757574] leading-5 font-medium'>
+                  {section.children.slice(0, 4).map((item, i) => (
+                    <li key={i}>{item.name}</li>
+                  ))}
+                </ul>
               </div>
-              <ul className='pl-10 space-y-1 text-[13px] text-[#757574] leading-5 font-medium'>
-                {section.items.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+            ))}
         </div>
         <div className='absolute bottom-5 left-5 text-xs text-gray-500'>
           <ul className='space-x-2 flex text-[13px] text-[#757574] leading-5 font-medium'>
