@@ -5,7 +5,7 @@ import IconFood from '../icons/IconFood';
 import IconWeather from '../icons/IconWeather';
 import IconCoQuan from '../icons/IconCoQuan';
 import { getBaseUrl } from '@/utils';
-import { getCurrentWeather } from '@/libs/weather';
+import { getCurrentWeather, getForecastWeather } from '@/libs/weather';
 import dataMap from '@/data/subadmin2.json';
 
 export interface SectionItem {
@@ -35,12 +35,13 @@ export default async function CategoriesHome() {
       icon: <IconTienTich />,
     },
   ];
-  console.log(baseUrl);
-
-  const location = dataMap.data.filter((item) => item?.slug === baseUrl);
-  console.log(location);
-  const currentWeather = await getCurrentWeather('21.0023161, 105.7179738');
-  console.log(currentWeather?.weather);
+  const location = dataMap.data.filter(
+    (item) => item?.slug === baseUrl.split('.')[0]
+  );
+  const forecastWeather = await getForecastWeather(
+    location.length > 0 ? location[0].coordinates : '21.028511,105.804817'
+  );
+  console.log(forecastWeather?.weather);
 
   const sectionList: SectionItem[] = [
     {
@@ -57,11 +58,20 @@ export default async function CategoriesHome() {
     {
       title: 'THỜI TIẾT',
       subtitle: 'Yên Hòa',
-      contents: [
-        'Thời tiết hôm nay Yên Hòa',
-        'Thời tiết ngày mai Yên Hòa',
-        'Thời tiết Yên Hòa 7 ngày tới',
-      ],
+      contents: forecastWeather?.weather
+        ? forecastWeather.weather.map(
+            (day: {
+              date: string;
+              day: {
+                condition: {
+                  text: string;
+                };
+                avgtemp_c: number;
+              };
+            }) =>
+              `${day.date}: ${day.day.condition.text}, ${day.day.avgtemp_c}°C`
+          )
+        : 'N/A',
       hiddenOnMobile: true,
     },
     {
@@ -128,7 +138,7 @@ export default async function CategoriesHome() {
             {section.contents.map((text, i) => (
               <p
                 key={i}
-                className='text-[13px] text-black font-thin leading-[25px] line-clamp-1'
+                className='text-[13px] text-black font-thin leading-[25px]'
               >
                 {text}
               </p>

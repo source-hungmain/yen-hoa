@@ -17,10 +17,10 @@ export default function Sidebar({
   onClose: () => void;
 }) {
   const menuIcon = [
-    <IconKhamPha />,
-    <IconRaoVat />,
-    <IconDanhBa />,
-    <IconPeople />,
+    <IconKhamPha key="khampha" />,
+    <IconRaoVat key="raovat" />,
+    <IconDanhBa key="danhba" />,
+    <IconPeople key="people" />,
   ];
 
   const FOOTER_LINKS = ['Về YenhoaFun', 'Chính sách', 'Điều khoản'];
