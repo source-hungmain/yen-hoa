@@ -41,7 +41,6 @@ export default async function CategoriesHome() {
   const forecastWeather = await getForecastWeather(
     location.length > 0 ? location[0].coordinates : '21.028511,105.804817'
   );
-  console.log(forecastWeather?.weather);
 
   const sectionList: SectionItem[] = [
     {
