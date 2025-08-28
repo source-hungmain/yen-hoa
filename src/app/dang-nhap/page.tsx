@@ -8,6 +8,7 @@ import SubmitOtp from '@/components/OtpLoginComponent/SubmitOtp';
 import { useState } from 'react';
 import BaseInput from '@/components/BaseInputComponent/BaseInput';
 import { authLogin } from '@/libs/csr/auth';
+import { IResponseLogin } from '@/interfaces/IResponseLogin';
 
 interface IFormLogin {
   sdt: string;
@@ -38,7 +39,9 @@ export default function Page() {
   const onSubmit = async (data: IFormLogin) => {
     try {
       const res = await authLogin(data.sdt);
-      console.log('res', res);
+      if (res && res?.success) {
+        setIsShowInputOtp(true);
+      }
     } catch (error) {
       console.error('error', error);
     }

@@ -5,7 +5,7 @@ import IconFood from '../icons/IconFood';
 import IconWeather from '../icons/IconWeather';
 import IconCoQuan from '../icons/IconCoQuan';
 import { getBaseUrl } from '@/utils';
-import { getForecastWeather } from '@/libs/weather';
+import { getForecastWeather } from '@/libs/ssr/weather';
 import dataMap from '@/data/subadmin2.json';
 
 export interface SectionItem {

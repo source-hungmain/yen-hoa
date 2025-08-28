@@ -17,10 +17,10 @@ export default function Sidebar({
   onClose: () => void;
 }) {
   const menuIcon = [
-    <IconKhamPha key="khampha" />,
-    <IconRaoVat key="raovat" />,
-    <IconDanhBa key="danhba" />,
-    <IconPeople key="people" />,
+    <IconKhamPha key='khampha' />,
+    <IconRaoVat key='raovat' />,
+    <IconDanhBa key='danhba' />,
+    <IconPeople key='people' />,
   ];
 
   const FOOTER_LINKS = ['Về YenhoaFun', 'Chính sách', 'Điều khoản'];
@@ -53,7 +53,7 @@ export default function Sidebar({
               alt='Logo'
               fill
               quality={100}
-              sizes='100vw'
+              sizes='126px'
               className='object-cover'
             />
           </div>

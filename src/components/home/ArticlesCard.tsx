@@ -14,8 +14,8 @@ export default function ArticlesCard({ post }: { post: IPost }) {
               src='/ava.png'
               width={1000}
               height={1000}
-              sizes='100vw'
-              alt='ava'
+              sizes='29px'
+              alt='avatar'
               className='w-full h-full object-cover'
             />
           </div>
@@ -34,7 +34,7 @@ export default function ArticlesCard({ post }: { post: IPost }) {
             <Image
               fill
               quality={100}
-              sizes='100vw'
+              sizes='100px'
               src={post.images[0]}
               alt={``}
               className='object-cover rounded'
