@@ -6,11 +6,11 @@ import React, { useEffect, useState } from 'react';
 
 export default function ResendOtp({
   setIsShowInputOtp,
-  userId,
+  phoneNumber,
   isRegister,
 }: {
   setIsShowInputOtp: React.Dispatch<React.SetStateAction<boolean>>;
-  userId: string;
+  phoneNumber: string;
   isRegister: boolean;
 }) {
   const { setLoading } = useLoading();
@@ -19,7 +19,7 @@ export default function ResendOtp({
   const onResend = async () => {
     try {
       setLoading(true);
-      const res = await authResend(userId);
+      const res = await authResend(phoneNumber);
       if (res && res?.success) {
         setLoading(false);
         console.log('resend otp success');
