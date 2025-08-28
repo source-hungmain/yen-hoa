@@ -22,7 +22,7 @@ const loginSchema = yup.object({
 export default function Page() {
   const { setLoading } = useLoading();
 
-  const [isShowInputOtp, setIsShowInputOtp] = useState<boolean>(true);
+  const [isShowInputOtp, setIsShowInputOtp] = useState<boolean>(false);
   const [responseOtp, setResponseOtp] = useState<string>('');
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const {
