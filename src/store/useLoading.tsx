@@ -28,15 +28,16 @@ export function useLoading() {
   return context;
 }
 
-function LoadingOverlay({
-  setLoading,
-}: {
-  setLoading: (state: boolean) => void;
-}) {
+function LoadingOverlay() {
+  //   {
+  //   setLoading,
+  // }: {
+  //   setLoading: (state: boolean) => void;
+  //   }
   return (
     <div
       className='fixed inset-0 flex items-center justify-center bg-black/40 z-50'
-    //   onClick={() => setLoading(false)} // click ngoài tắt
+      //   onClick={() => setLoading(false)} // click ngoài tắt
     >
       <div
         className='bg-transparent rounded-full p-4'
