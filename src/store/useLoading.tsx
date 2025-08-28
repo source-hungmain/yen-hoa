@@ -36,7 +36,7 @@ function LoadingOverlay({
   return (
     <div
       className='fixed inset-0 flex items-center justify-center bg-black/40 z-50'
-      onClick={() => setLoading(false)} // click ngoài tắt
+    //   onClick={() => setLoading(false)} // click ngoài tắt
     >
       <div
         className='bg-transparent rounded-full p-4'
