@@ -15,7 +15,7 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
   return (
     <LoadingContext.Provider value={{ loading, setLoading }}>
       {children}
-      {loading && <LoadingOverlay setLoading={setLoading} />}
+      {loading && <LoadingOverlay />}
     </LoadingContext.Provider>
   );
 }
@@ -29,16 +29,8 @@ export function useLoading() {
 }
 
 function LoadingOverlay() {
-  //   {
-  //   setLoading,
-  // }: {
-  //   setLoading: (state: boolean) => void;
-  //   }
   return (
-    <div
-      className='fixed inset-0 flex items-center justify-center bg-black/40 z-50'
-      //   onClick={() => setLoading(false)} // click ngoài tắt
-    >
+    <div className='fixed inset-0 flex items-center justify-center bg-black/40 z-50'>
       <div
         className='bg-transparent rounded-full p-4'
         onClick={(e) => e.stopPropagation()} // chặn click vào icon không bị tắt
