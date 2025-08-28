@@ -5,9 +5,11 @@ import { useRouter } from 'next/navigation';
 import clsx from 'clsx';
 
 export default function SubmitOtp({
+  setIsShowInputOtp,
   phoneNumber,
   responseOtp,
 }: {
+  setIsShowInputOtp: React.Dispatch<React.SetStateAction<boolean>>;
   phoneNumber: string;
   responseOtp: string;
 }) {
@@ -106,7 +108,11 @@ export default function SubmitOtp({
         Vui lòng nhập mã 6 chữ số được gửi đến email của bạn.
       </p>
 
-      <ResendOtp phoneNumber={phoneNumber} isRegister={true} />
+      <ResendOtp
+        setIsShowInputOtp={setIsShowInputOtp}
+        phoneNumber={phoneNumber}
+        isRegister={true}
+      />
     </form>
   );
 }

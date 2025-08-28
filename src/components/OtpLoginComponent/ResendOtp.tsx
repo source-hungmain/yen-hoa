@@ -5,9 +5,11 @@ import { authLogin } from '@/libs/csr/auth';
 import React, { useEffect, useState } from 'react';
 
 export default function ResendOtp({
+  setIsShowInputOtp,
   phoneNumber,
   isRegister,
 }: {
+  setIsShowInputOtp: React.Dispatch<React.SetStateAction<boolean>>;
   phoneNumber: string;
   isRegister: boolean;
 }) {
@@ -25,6 +27,10 @@ export default function ResendOtp({
     setCounter(60);
   };
 
+  const onChangePhone = () => {
+    setIsShowInputOtp(false);
+  };
+
   useEffect(() => {
     let timer: NodeJS.Timeout;
     if (counter > 0) {
@@ -36,7 +42,15 @@ export default function ResendOtp({
   }, [counter]);
 
   return (
-    <div className='w-full flex flex-col items-center mt-[5px]'>
+    <div className='w-full flex justify-between items-center mt-[5px]'>
+      <p className='text-gray-600 text-xs'>
+        <span
+          onClick={onChangePhone}
+          className='text-[#3272DE] text-xs font-medium cursor-pointer hover:underline'
+        >
+          Đổi số điện thoại
+        </span>
+      </p>
       <p className='text-gray-600 text-xs'>
         {counter > 0 ? (
           <>Lấy mã OTP sau: {counter}s</>

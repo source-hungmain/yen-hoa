@@ -19,7 +19,7 @@ const loginSchema = yup.object({
 });
 
 export default function Page() {
-  const [isShowInputOtp, setIsShowInputOtp] = useState<boolean>(false);
+  const [isShowInputOtp, setIsShowInputOtp] = useState<boolean>(true);
   const [responseOtp, setResponseOtp] = useState<string>('');
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const {
@@ -129,7 +129,11 @@ export default function Page() {
             )}
 
             {isShowInputOtp && (
-              <SubmitOtp phoneNumber={phoneNumber} responseOtp={responseOtp} />
+              <SubmitOtp
+                setIsShowInputOtp={setIsShowInputOtp}
+                phoneNumber={phoneNumber}
+                responseOtp={responseOtp}
+              />
             )}
 
             <div className='flex justify-center items-center text-center gap-2 w-[100%]'>
