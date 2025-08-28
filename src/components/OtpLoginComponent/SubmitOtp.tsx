@@ -7,10 +7,12 @@ import { authVerifyOtp } from '@/libs/csr/auth';
 
 export default function SubmitOtp({
   setIsShowInputOtp,
+  phoneNumber,
   userId,
   responseOtp,
 }: {
   setIsShowInputOtp: React.Dispatch<React.SetStateAction<boolean>>;
+  phoneNumber: string;
   userId: string;
   responseOtp: string;
 }) {
@@ -112,7 +114,7 @@ export default function SubmitOtp({
 
       <ResendOtp
         setIsShowInputOtp={setIsShowInputOtp}
-        userId={userId}
+        phoneNumber={phoneNumber}
         isRegister={true}
       />
     </form>

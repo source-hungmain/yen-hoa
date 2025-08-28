@@ -21,10 +21,10 @@ const loginSchema = yup.object({
 
 export default function Page() {
   const { setLoading } = useLoading();
-
   const [isShowInputOtp, setIsShowInputOtp] = useState<boolean>(false);
   const [responseOtp, setResponseOtp] = useState<string>('');
   const [userId, setUserId] = useState<string>('');
+  const [phoneNumber, setPhoneNumber] = useState<string>('');
   const {
     control,
     handleSubmit,
@@ -46,6 +46,7 @@ export default function Page() {
         setIsShowInputOtp(true);
         setResponseOtp(res.result.otp_code);
         setUserId(res.result.user_id.toString());
+        setPhoneNumber(data.sdt);
       }
     } catch (error) {
       console.error('error', error);
@@ -135,6 +136,7 @@ export default function Page() {
 
             {isShowInputOtp && (
               <SubmitOtp
+                phoneNumber={phoneNumber}
                 setIsShowInputOtp={setIsShowInputOtp}
                 userId={userId}
                 responseOtp={responseOtp}
