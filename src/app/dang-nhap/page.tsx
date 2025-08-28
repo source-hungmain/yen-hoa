@@ -7,8 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import SubmitOtp from '@/components/OtpLoginComponent/SubmitOtp';
 import { useState } from 'react';
 import BaseInput from '@/components/BaseInputComponent/BaseInput';
-import { authLogin } from '@/libs/auth';
-import axios from 'axios';
+import { authLogin } from '@/libs/csr/auth';
 
 interface IFormLogin {
   sdt: string;
@@ -27,7 +26,7 @@ export default function Page() {
   const {
     control,
     handleSubmit,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useForm<IFormLogin>({
     mode: 'onBlur',
     resolver: yupResolver(loginSchema),
@@ -36,40 +35,12 @@ export default function Page() {
     },
   });
 
-  const handleSubmmit = (data: IFormLogin) => {
-    console.log('handle Submmit', data);
+  const onSubmit = async (data: IFormLogin) => {
     try {
-      // const res = await authLogin(Number(data.sdt));
-      const res = axios
-        .post(
-          'https://dev.nocal.vn/api/auth/login',
-          {
-            phone: data.sdt,
-            phone_country: 'VN',
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              'X-AppApiToken': 'Tlhia2VISnZwdUJVeUxLQnVQWU9JdmFNbEFnTno1WGQ=',
-            },
-          }
-        )
-        .then((response) => {
-          console.log('response', response.data);
-        })
-        .catch((error) => {
-          console.error(
-            'Error during authLogin request:',
-            error.response?.data || error
-          );
-        });
-
-      // if (res) {
-      //   setIsShowInputOtp(true);
-      //   console.log('res', res);
-      // }
+      const res = await authLogin(data.sdt);
+      console.log('res', res);
     } catch (error) {
-      console.log('error', error);
+      console.error('error', error);
     }
   };
 
@@ -117,15 +88,12 @@ export default function Page() {
             </div>
 
             {!isShowInputOtp && (
-              <form
-                className='flex flex-col'
-                onSubmit={handleSubmit(handleSubmmit)}
-              >
+              <form className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex gap-4 border-[1px] justify-center px-1 items-center rounded-[5px] border-[#DFDFDF]'>
                   <Controller
                     name='sdt'
                     control={control}
-                    render={({ field: { value, onChange, onBlur } }) => {
+                    render={({ field: { value, onChange } }) => {
                       return (
                         <BaseInput
                           value={value}
