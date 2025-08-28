@@ -12,7 +12,9 @@ export async function getListCategoriesCached() {
         const raw = fs.readFileSync(CACHE_PATH, "utf-8");
         try {
             console.log("Loading categories from cache...");
-            return JSON.parse(raw);
+            console.log(JSON.parse(raw));
+
+            // return JSON.parse(raw);
         } catch {
             console.error("Cache JSON bị lỗi, sẽ fetch lại...");
         }
