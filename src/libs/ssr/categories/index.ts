@@ -13,8 +13,7 @@ export async function getListCategoriesCached() {
         try {
             console.log("Loading categories from cache...");
             console.log(JSON.parse(raw));
-
-            // return JSON.parse(raw);
+            return JSON.parse(raw);
         } catch {
             console.error("Cache JSON bị lỗi, sẽ fetch lại...");
         }
@@ -22,27 +21,27 @@ export async function getListCategoriesCached() {
 
     // Nếu chưa có cache thì gọi API
     const apiServer = createApiServer();
-    try {
-        console.log("Fetching categories from API...");
-        const res = await apiServer.get("/categories", {
-            params: {
-                embed: "parent,children",
-                perPage: 4,
-                page: 1,
-                sort: "lft",
-            },
-        });
+    // try {
+    //     console.log("Fetching categories from API...");
+    //     const res = await apiServer.get("/categories", {
+    //         params: {
+    //             embed: "parent,children",
+    //             perPage: 4,
+    //             page: 1,
+    //             sort: "lft",
+    //         },
+    //     });
 
-        const data = res.data.result;
-        // Lưu cache vào file JSON
-        fs.mkdirSync(path.dirname(CACHE_PATH), { recursive: true });
-        fs.writeFileSync(CACHE_PATH, JSON.stringify(data, null, 2), "utf-8");
+    //     const data = res.data.result;
+    //     // Lưu cache vào file JSON
+    //     fs.mkdirSync(path.dirname(CACHE_PATH), { recursive: true });
+    //     fs.writeFileSync(CACHE_PATH, JSON.stringify(data, null, 2), "utf-8");
 
-        return data;
-    } catch (error) {
-        console.error("Error fetching categories:", error);
-        return null;
-    }
+    //     return data;
+    // } catch (error) {
+    //     console.error("Error fetching categories:", error);
+    //     return null;
+    // }
 }
 
 
