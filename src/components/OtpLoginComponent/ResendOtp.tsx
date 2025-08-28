@@ -1,17 +1,16 @@
 'use client';
 
-import { IFormLogin } from '@/interfaces/IResponseLogin';
-import { authLogin } from '@/libs/csr/auth';
+import { authResend } from '@/libs/csr/auth';
 import { useLoading } from '@/store/useLoading';
 import React, { useEffect, useState } from 'react';
 
 export default function ResendOtp({
   setIsShowInputOtp,
-  phoneNumber,
+  userId,
   isRegister,
 }: {
   setIsShowInputOtp: React.Dispatch<React.SetStateAction<boolean>>;
-  phoneNumber: string;
+  userId: string;
   isRegister: boolean;
 }) {
   const { setLoading } = useLoading();
@@ -20,7 +19,7 @@ export default function ResendOtp({
   const onResend = async () => {
     try {
       setLoading(true);
-      const res = await authLogin(phoneNumber);
+      const res = await authResend(userId);
       if (res && res?.success) {
         setLoading(false);
         console.log('resend otp success');

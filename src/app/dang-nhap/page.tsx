@@ -24,7 +24,7 @@ export default function Page() {
 
   const [isShowInputOtp, setIsShowInputOtp] = useState<boolean>(false);
   const [responseOtp, setResponseOtp] = useState<string>('');
-  const [phoneNumber, setPhoneNumber] = useState<string>('');
+  const [userId, setUserId] = useState<string>('');
   const {
     control,
     handleSubmit,
@@ -45,7 +45,7 @@ export default function Page() {
         setLoading(false);
         setIsShowInputOtp(true);
         setResponseOtp(res.result.otp_code);
-        setPhoneNumber(data.sdt);
+        setUserId(res.result.user_id.toString());
       }
     } catch (error) {
       console.error('error', error);
@@ -136,7 +136,7 @@ export default function Page() {
             {isShowInputOtp && (
               <SubmitOtp
                 setIsShowInputOtp={setIsShowInputOtp}
-                phoneNumber={phoneNumber}
+                userId={userId}
                 responseOtp={responseOtp}
               />
             )}

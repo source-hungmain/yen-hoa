@@ -3,14 +3,15 @@ import React, { useEffect, useRef } from 'react';
 import ResendOtp from './ResendOtp';
 import { useRouter } from 'next/navigation';
 import clsx from 'clsx';
+import { authVerifyOtp } from '@/libs/csr/auth';
 
 export default function SubmitOtp({
   setIsShowInputOtp,
-  phoneNumber,
+  userId,
   responseOtp,
 }: {
   setIsShowInputOtp: React.Dispatch<React.SetStateAction<boolean>>;
-  phoneNumber: string;
+  userId: string;
   responseOtp: string;
 }) {
   const [otpError, setOtpError] = React.useState<boolean>(false);
@@ -52,11 +53,12 @@ export default function SubmitOtp({
   const checkAndSubmit = async () => {
     const code = inputsRef.current.map((i) => i.value).join('');
     if (code.length == 6) {
-      if (code == responseOtp) {
+      const res = await authVerifyOtp(userId, code);
+      if (res.success) {
         router.push('/');
       } else {
         setOtpError(true);
-        console.log('Mã OTP không đúng');
+        // console.log('Mã OTP không đúng');
       }
     }
   };
@@ -110,7 +112,7 @@ export default function SubmitOtp({
 
       <ResendOtp
         setIsShowInputOtp={setIsShowInputOtp}
-        phoneNumber={phoneNumber}
+        userId={userId}
         isRegister={true}
       />
     </form>
