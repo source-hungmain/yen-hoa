@@ -50,7 +50,7 @@ export default function SubmitOtp({
   const checkAndSubmit = async () => {
     const code = inputsRef.current.map((i) => i.value).join('');
     if (code.length == 6) {
-      if (code === responseOtp) {
+      if (code == responseOtp) {
         router.push('/');
       } else {
         setOtpError(true);
