@@ -31,7 +31,6 @@ export async function getListCategoriesCached() {
         });
 
         const data = res.data.result;
-
         // Lưu cache vào file JSON
         fs.mkdirSync(path.dirname(CACHE_PATH), { recursive: true });
         fs.writeFileSync(CACHE_PATH, JSON.stringify(data, null, 2), "utf-8");

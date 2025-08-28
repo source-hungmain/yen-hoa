@@ -137,7 +137,7 @@ export default async function CategoriesHome() {
             {section.contents.map((text, i) => (
               <p
                 key={i}
-                className='text-[13px] text-black font-thin leading-[25px]'
+                className='text-[13px] text-black font-normal leading-[25px]'
               >
                 {text}
               </p>
