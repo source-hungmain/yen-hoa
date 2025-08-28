@@ -55,11 +55,11 @@ export default function Header({
 
   return (
     <>
-      {/* <Sidebar
+      <Sidebar
         listCategories={listCategories}
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
-      /> */}
+      />
       <Updateprofile
         modalUpdateProfile={modalUpdateProfile}
         modalRef={modalUpdateProfileRef}
