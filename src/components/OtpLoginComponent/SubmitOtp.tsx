@@ -1,15 +1,25 @@
-"use client";
-import React, { useEffect, useRef } from "react";
-import ResendOtp from "./ResendOtp";
+'use client';
+import React, { useEffect, useRef } from 'react';
+import ResendOtp from './ResendOtp';
+import { useRouter } from 'next/navigation';
+import clsx from 'clsx';
 
-export default function SubmitOtp() {
+export default function SubmitOtp({
+  phoneNumber,
+  responseOtp,
+}: {
+  phoneNumber: string;
+  responseOtp: string;
+}) {
+  const [otpError, setOtpError] = React.useState<boolean>(false);
+  const router = useRouter();
   const inputsRef = useRef<HTMLInputElement[]>([]);
 
   useEffect(() => {
     const handlePaste = (e: ClipboardEvent) => {
       e.preventDefault();
-      const paste = e.clipboardData?.getData("text") || "";
-      const digits = paste.replace(/\D/g, "").slice(0, 6).split("");
+      const paste = e.clipboardData?.getData('text') || '';
+      const digits = paste.replace(/\D/g, '').slice(0, 6).split('');
 
       digits.forEach((digit, i) => {
         const input = inputsRef.current[i];
@@ -29,38 +39,43 @@ export default function SubmitOtp() {
       checkAndSubmit();
     };
 
-    const container = document.getElementById("otp-input-container");
-    container?.addEventListener("paste", handlePaste);
+    const container = document.getElementById('otp-input-container');
+    container?.addEventListener('paste', handlePaste);
 
     return () => {
-      container?.removeEventListener("paste", handlePaste);
+      container?.removeEventListener('paste', handlePaste);
     };
   }, []);
 
   const checkAndSubmit = async () => {
-    const code = inputsRef.current.map((i) => i.value).join("");
-    if (code.length !== 6) return;
-    console.log('code',code);
-    
+    const code = inputsRef.current.map((i) => i.value).join('');
+    if (code.length == 6) {
+      if (code === responseOtp) {
+        router.push('/');
+      } else {
+        setOtpError(true);
+        console.log('Mã OTP không đúng');
+      }
+    }
   };
 
   return (
-    <form className="max-w-sm mx-auto " id="otp-input-container">
-      <div className="flex mb-2 space-x-2 justify-center">
+    <form className='max-w-sm mx-auto ' id='otp-input-container'>
+      <div className='flex mb-2 space-x-2 justify-center'>
         {Array.from({ length: 6 }).map((_, idx) => (
           <input
             key={idx}
             ref={(el) => {
               if (el) inputsRef.current[idx] = el;
             }}
-            type="text"
-            inputMode="numeric"
-            pattern="[0-9]*"
+            type='text'
+            inputMode='numeric'
+            pattern='[0-9]*'
             maxLength={1}
             id={`code-${idx + 1}`}
             onInput={(e) => {
               const input = e.currentTarget;
-              input.value = input.value.replace(/[^0-9]/g, "");
+              input.value = input.value.replace(/[^0-9]/g, '');
 
               // Move to next input
               if (input.value && idx < 5) {
@@ -70,24 +85,28 @@ export default function SubmitOtp() {
               checkAndSubmit();
             }}
             onKeyDown={(e) => {
-              if (e.key === "Backspace") {
+              if (e.key === 'Backspace') {
+                setOtpError(false);
                 const input = e.currentTarget;
                 if (!input.value && idx > 0) {
                   const prevInput = inputsRef.current[idx - 1];
                   prevInput.focus();
-                  prevInput.value = "";
+                  prevInput.value = '';
                 }
               }
             }}
-            className="w-10 h-10 text-center text-sm font-bold border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#3272DE]"
+            className={clsx(
+              'w-10 h-10 text-center text-sm font-bold border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#3272DE]',
+              otpError && 'border-red-500'
+            )}
           />
         ))}
       </div>
-      <p className="text-xs text-gray-500 text-center mt-[10px]">
+      <p className='text-xs text-gray-500 text-center mt-[10px]'>
         Vui lòng nhập mã 6 chữ số được gửi đến email của bạn.
       </p>
 
-      <ResendOtp isRegister={true} />
+      <ResendOtp phoneNumber={phoneNumber} isRegister={true} />
     </form>
   );
 }

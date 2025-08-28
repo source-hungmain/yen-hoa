@@ -8,11 +8,7 @@ import SubmitOtp from '@/components/OtpLoginComponent/SubmitOtp';
 import { useState } from 'react';
 import BaseInput from '@/components/BaseInputComponent/BaseInput';
 import { authLogin } from '@/libs/csr/auth';
-import { IResponseLogin } from '@/interfaces/IResponseLogin';
-
-interface IFormLogin {
-  sdt: string;
-}
+import { IFormLogin } from '@/interfaces/IResponseLogin';
 
 const loginSchema = yup.object({
   sdt: yup
@@ -24,6 +20,8 @@ const loginSchema = yup.object({
 
 export default function Page() {
   const [isShowInputOtp, setIsShowInputOtp] = useState<boolean>(false);
+  const [responseOtp, setResponseOtp] = useState<string>('');
+  const [phoneNumber, setPhoneNumber] = useState<string>('');
   const {
     control,
     handleSubmit,
@@ -40,6 +38,8 @@ export default function Page() {
     try {
       const res = await authLogin(data.sdt);
       if (res && res?.success) {
+        setResponseOtp(res.result.otp_code);
+        setPhoneNumber(data.sdt);
         setIsShowInputOtp(true);
       }
     } catch (error) {
@@ -102,7 +102,6 @@ export default function Page() {
                           value={value}
                           height={39}
                           onChange={onChange}
-                          // onBlur={onBlur}
                           placeholder='Số điện thoại'
                           inputMode='numeric'
                           className={'border-none'}
@@ -129,7 +128,9 @@ export default function Page() {
               </form>
             )}
 
-            {isShowInputOtp && <SubmitOtp />}
+            {isShowInputOtp && (
+              <SubmitOtp phoneNumber={phoneNumber} responseOtp={responseOtp} />
+            )}
 
             <div className='flex justify-center items-center text-center gap-2 w-[100%]'>
               <div className='h-[1px] bg-[#DFDFDF] w-[43%]'></div>
