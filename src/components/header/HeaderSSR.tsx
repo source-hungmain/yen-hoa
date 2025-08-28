@@ -9,9 +9,9 @@ export default async function HeaderSSR() {
   
   return (
     <>
-      {listCategories.data && (
+      {/* {listCategories.data && (
         <Header listCategories={listCategories.data || []} />
-      )}
+      )} */}
     </>
   );
 }
