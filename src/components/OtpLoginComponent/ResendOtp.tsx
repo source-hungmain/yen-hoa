@@ -2,6 +2,7 @@
 
 import { IFormLogin } from '@/interfaces/IResponseLogin';
 import { authLogin } from '@/libs/csr/auth';
+import { useLoading } from '@/store/useLoading';
 import React, { useEffect, useState } from 'react';
 
 export default function ResendOtp({
@@ -13,12 +14,15 @@ export default function ResendOtp({
   phoneNumber: string;
   isRegister: boolean;
 }) {
+  const { setLoading } = useLoading();
   const [counter, setCounter] = useState(60);
 
   const onResend = async () => {
     try {
+      setLoading(true);
       const res = await authLogin(phoneNumber);
       if (res && res?.success) {
+        setLoading(false);
         console.log('resend otp success');
       }
     } catch (error) {

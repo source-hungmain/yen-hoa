@@ -1,4 +1,3 @@
-// src/app/ReduxProvider.tsx
 "use client";
 import { store, persistor } from "./store";
 import { Provider } from "react-redux";

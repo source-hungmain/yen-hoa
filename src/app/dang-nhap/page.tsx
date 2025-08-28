@@ -9,6 +9,7 @@ import { useState } from 'react';
 import BaseInput from '@/components/BaseInputComponent/BaseInput';
 import { authLogin } from '@/libs/csr/auth';
 import { IFormLogin } from '@/interfaces/IResponseLogin';
+import { useLoading } from '@/store/useLoading';
 
 const loginSchema = yup.object({
   sdt: yup
@@ -19,6 +20,8 @@ const loginSchema = yup.object({
 });
 
 export default function Page() {
+  const { setLoading } = useLoading();
+
   const [isShowInputOtp, setIsShowInputOtp] = useState<boolean>(true);
   const [responseOtp, setResponseOtp] = useState<string>('');
   const [phoneNumber, setPhoneNumber] = useState<string>('');
@@ -35,12 +38,14 @@ export default function Page() {
   });
 
   const onSubmit = async (data: IFormLogin) => {
+    setLoading(true);
     try {
       const res = await authLogin(data.sdt);
       if (res && res?.success) {
+        setLoading(false);
+        setIsShowInputOtp(true);
         setResponseOtp(res.result.otp_code);
         setPhoneNumber(data.sdt);
-        setIsShowInputOtp(true);
       }
     } catch (error) {
       console.error('error', error);
