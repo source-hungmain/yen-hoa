@@ -66,7 +66,7 @@ export default function SubmitOtp({
   };
 
   return (
-    <form className='max-w-sm mx-auto ' id='otp-input-container'>
+    <form className='w-full max-w-sm mx-auto ' id='otp-input-container'>
       <div className='flex mb-2 space-x-2 justify-center'>
         {Array.from({ length: 6 }).map((_, idx) => (
           <input
